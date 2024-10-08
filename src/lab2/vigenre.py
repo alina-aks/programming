@@ -9,7 +9,17 @@ def encrypt_vigenere(plaintext: str, keyword: str) -> str:
     'LXFOPVEFRNHR'
     """
     ciphertext = ""
-    # PUT YOUR CODE HERE
+    plaintext1 = plaintext.lower()
+    keyword = keyword.lower() * 10000
+    alph = "abcdefghijklmnopqrstuvwxyz" * 1000
+    keyword = keyword[:len(plaintext) + 1]
+    shift = []
+    for i in range(len(keyword)):
+        shift.append(alph.index(keyword[i]))
+    for j in range(len(plaintext1)):
+        ciphertext += alph[alph.index(plaintext1[j]) + shift[j]]
+    if plaintext.isupper() == True:
+        ciphertext = ciphertext.upper()
     return ciphertext
 
 
